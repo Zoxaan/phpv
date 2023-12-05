@@ -1,8 +1,10 @@
 <?php
-session_start();
+
+
 if(!empty($_SESSION['error'])){
 echo $_SESSION['error'];
 }
+
  include "headet.php";?>
 <form class="form" method="post" action="login.php">
     <div class="row  w-25 mx-auto">

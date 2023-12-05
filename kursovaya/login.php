@@ -17,13 +17,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Проверка пароля
     if ($user && password_verify($password, $user['password'])) {
         // Пароль верен, устанавливаем сессию
+        $_SESSION['auth'] = true;
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
         $_SESSION['idrolle'] = $user['idrolle'];
         $_SESSION['avatars'] = $user['avatars'];
 
         // Перенаправляем пользователя на защищенную страницу
-        header('Location: user.php');
+        header('Location: glavnaya.php');
         exit;
     } else {
         echo 'Неверные имя пользователя или пароль.';

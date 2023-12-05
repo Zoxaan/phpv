@@ -1,13 +1,15 @@
 <?php
 session_start();
-$id=$_SESSION['user']['id'];
+$id=$_SESSION['user_id'];
 $conn = mysqli_connect("localhost", "root", "", "zoxan");
 $query = $conn->query("SELECT * FROM users WHERE id='$id'");
 while($user = mysqli_fetch_assoc($query))
 {
     $users[] = $user;
 }
-var_dump($user);
+if ($_SESSION['idrolle'] != 2){
+    header("location:reg.php");
+}
 ?>
 <!DOCTYPE html>
 <?php include "headet.php"; ?>

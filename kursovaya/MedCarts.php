@@ -2,10 +2,10 @@
 <?php include "headet.php";?>
 <?php
 $conn = mysqli_connect("localhost", "root", "", "zoxan");
-$query = $conn->query("SELECT * FROM pacients");
-while($pacient = mysqli_fetch_assoc($query))
+$query = $conn->query("SELECT * FROM users");
+while($user = mysqli_fetch_assoc($query))
 {
-    $pacients[] = $pacient;
+    $users[] = $user;
 }
 ?>
 
@@ -21,29 +21,32 @@ while($pacient = mysqli_fetch_assoc($query))
 <form action="AddMedcarts.php" method="post" class="row g-3">
 
     <div class="col-md-6">
-        <label for="inputEmail4" class="form-label">№Номер карты</label>
-        <input type="text" class="form-control" name="cartsnomer">
+        <label for="inputEmail4" class="form-label">Дата поступления</label>
+        <input type="date" class="form-control" name="datepost">
     </div>
+
 
     <form class="row g-3">
         <div class="col-md-6">
-            <label for="inputEmail4" class="form-label">Дата создания</label>
-            <input type="text" class="form-control" name="datecarts">
+            <label for="inputEmail4" class="form-label">Диагноз</label>
+            <input type="text" class="form-control" name="diagnoz">
         </div>
+        <form class="row g-3">
+            <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Лечение</label>
+                <input type="text" class="form-control" name="heal">
+            </div>
+            <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Доктор</label>
+                <input type="text" class="form-control" name="doctor">
+            </div>
         <div class="col-md-6">
-        <select class="form-select" name="pacientnomer" id="cars">
-            <?php foreach ($pacients as $pacient): ?>
-            <option name="pacientnomer" value="<?=$pacient['id']?>"><?= $pacient['name'] ?></option>
+        <select class="form-select"  name="user_id" id="cars">
+            <?php foreach ($users as $user): ?>
+            <option name="user_id"value="<?=$user["id"]?>" ><?= $user['username'] ?></option>
             <?php endforeach; ?>
         </select>
         </div>
-            <div class="col-md-6">
-            <select  class="form-select" name="status" id="cars">
-                <option name="status" value="готов">готов</option>
-                <option name="status" value="На обработке">На обработке</option>
-                <option name="status" value="не готов">не готов</option>
-            </select>
-            </div>
             <form class="row g-3">
                 <div class="col-6">
                     <button onclick="da()" type="submit" class="btn btn-primary">Добавить мед карту</button>

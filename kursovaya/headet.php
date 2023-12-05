@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<?php
+session_start();
+// Проверка, вошел ли пользователь
+if (!isset($_SESSION['auth'])){
+    $_SESSION['auth']=false;
+}
+
+?>
 <html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
@@ -12,13 +20,22 @@
     <div class="row">
         <ul class="nav nav-underline">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="glavnaya.php">Активная</a>
+                <a class="nav-link" href="glavnaya.php">Главная</a>
             </li>
+            <?php if ($_SESSION["auth"] === true) {?>
+                <li class="nav-item">
+                <a class="nav-link" href="logout.php">Выйти</a>
+            </li>
+           <?php } else {?>
             <li class="nav-item">
                 <a class="nav-link" href="user.php">Войти</a>
             </li>
+                <?php }?>
             <li class="nav-item">
                 <a class="nav-link" href="#">Мед.Карты</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="strprofile.php">Админка</a>
             </li>
         </ul>
 </body>

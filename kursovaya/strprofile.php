@@ -1,4 +1,18 @@
 <?php include "headet.php"; ?>
+<?php
+$id=$_SESSION['user_id'];
+$conn = mysqli_connect("localhost", "root", "", "zoxan");
+$query = $conn->query("SELECT * FROM users WHERE id='$id'");
+while($user = mysqli_fetch_assoc($query))
+{
+    $users[] = $user;
+}
+if ($_SESSION['idrolle'] != 2){
+    header("location:reg.php");
+}
+?>
+
+
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-4">
@@ -12,10 +26,12 @@
                 </div>
             </div>
         </div>
+
         <div class="col-md-8">
             <div class="card mb-4">
                 <div class="card-body">
                     <h5 class="card-title">Медицинские карты</h5>
+                    <a class="btn btn-primary" href="MedCarts.php" role="button">Добавить мед.карту</a>
                     <ul class="list-group">
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             Карта 1
