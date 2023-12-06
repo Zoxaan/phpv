@@ -10,6 +10,7 @@ while($user = mysqli_fetch_assoc($query))
 if ($_SESSION['idrolle'] != 2){
     header("location:reg.php");
 }
+
 ?>
 
 
@@ -17,12 +18,13 @@ if ($_SESSION['idrolle'] != 2){
     <div class="row">
         <div class="col-md-4">
             <div class="card mb-4">
-                <img src="avatar.jpg" class="card-img-top" alt="Avatar">
+                <img src="<?=$users[0]['avatars']?>" class="card-img-top" alt="Avatar">
                 <div class="card-body">
-                    <h5 class="card-title">Имя Фамилия</h5>
-                    <p class="card-text">Дата рождения: 01.01.2000</p>
-                    <p class="card-text">Пол: Мужской</p>
-                    <p class="card-text">Адрес: г. Москва, ул. Пушкина, д. 1</p>
+                    <h5 class="card-title"><?=$users[0]['fio']?></h5>
+                    <p class="card-text"><?=$users[0]['date']?></p>
+                    <p class="card-text"><?=$users[0]['sex']?></p>
+                    <p class="card-text"><?=$users[0]['adres']?></p>
+                    <p class="card-text"><?=$users[0]['telephone']?></p>
                 </div>
             </div>
         </div>
