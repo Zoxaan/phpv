@@ -32,7 +32,7 @@ if (!isset($_SESSION['auth'])){
             </li>
                 <?php }?>
             <li class="nav-item">
-                <a class="nav-link" href="#">Мед.Карты</a>
+                <a class="nav-link" href="UsersProfile.php">Профиль пациента</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="strprofile.php">Админка</a>

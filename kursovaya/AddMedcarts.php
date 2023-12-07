@@ -20,8 +20,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else{
         echo "Ошибка: " . mysqli_error($conn);
     }
+    $sql = "UPDATE medcarts SET doctor='$doctor' WHERE user_id='$user_id'";
 
-    // Закрытие запроса
+// Выполнение SQL-запроса
+    if (mysqli_query($conn, $sql)) {
+        echo "Данные успешно обновлены";
+    } else {
+        echo "Ошибка при обновлении данных: " . mysqli_error($conn);
+    }
 }
-
+mysqli_close($conn);
 ?>
